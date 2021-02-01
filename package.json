@@ -1,0 +1,39 @@
+{
+  "name": "web-stox",
+  "description": "A simple stock price web app",
+  "version": "0.0.0",
+  "author": "Stan Vlad <vstan02@protonmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint 'src/**' --fix --ext .js,.ts"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "next": "10.0.0",
+    "normalize.css": "^8.0.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.1"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.55",
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "eslint": "^7.12.1",
+    "eslint-plugin-react": "^7.21.5",
+    "sass": "^1.28.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  }
+}
