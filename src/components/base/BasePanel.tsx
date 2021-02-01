@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PanelRoot = styled.aside`
-	width: 320px;
+	width: 420px;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -19,7 +19,7 @@ const PanelConfig = styled.div`
 	border-bottom: 1px solid ${ ({ theme }) => theme.color.BASE_BETA };
 `;
 
-export const BasePanel: React.FC = props => (
+export const BasePanel: React.FC = () => (
 	<PanelRoot>
 		<PanelConfig>
 			Config me!
