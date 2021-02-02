@@ -1,11 +1,14 @@
 import React from 'react';
 
 import { PrivatePage } from '../components/pages';
-import { BasePanel } from '../components/base';
+import { BasePanel, BaseChart, BaseBox } from '../components/base';
 
 const Home: React.FC = () => (
 	<PrivatePage title='Stox | A simple stock price web app'>
-		<BasePanel />
+		<BaseBox>
+			<BasePanel />
+			<BaseChart />
+		</BaseBox>
 	</PrivatePage>
 );
 
