@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { LogoutButton } from '../buttons';
+
 const PanelRoot = styled.aside`
 	width: 420px;
 	height: 100%;
@@ -22,7 +24,7 @@ const PanelConfig = styled.div`
 export const BasePanel: React.FC = () => (
 	<PanelRoot>
 		<PanelConfig>
-			Config me!
+			<LogoutButton>Logout</LogoutButton>
 		</PanelConfig>
 	</PanelRoot>
 );

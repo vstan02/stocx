@@ -6,4 +6,6 @@ export const BaseButton = styled.button`
 	outline: none;
 	border: none;
 	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
 `;

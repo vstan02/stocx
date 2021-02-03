@@ -5,8 +5,6 @@ import { BaseButton } from './BaseButton';
 export const FormButton = styled(BaseButton)`
 	color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 	background-color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
-	font-size: 16px;
-	font-weight: 600;
 	margin-top: 20px;
 	box-shadow: 0 2px 2px 0 ${ ({ theme }) => theme.color.BASE_BETA };
 	transition: 0.2s box-shadow, 0.3s background;
