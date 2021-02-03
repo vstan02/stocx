@@ -7,7 +7,8 @@ const PanelRoot = styled.aside`
 	width: 420px;
 	height: 100%;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 	background-color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 `;
 
@@ -21,10 +22,18 @@ const PanelConfig = styled.div`
 	border-bottom: 1px solid ${ ({ theme }) => theme.color.BASE_BETA };
 `;
 
-export const BasePanel: React.FC = () => (
+const PanelContent = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+export const BasePanel: React.FC = props => (
 	<PanelRoot>
 		<PanelConfig>
 			<LogoutButton>Logout</LogoutButton>
 		</PanelConfig>
+		<PanelContent>
+			{ props.children }
+		</PanelContent>
 	</PanelRoot>
 );

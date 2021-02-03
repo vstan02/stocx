@@ -7,7 +7,9 @@ import { StocksChart } from '../components/charts';
 const Home: React.FC = () => (
 	<PrivatePage title='Stox | A simple stock price web app'>
 		<BaseBox>
-			<BasePanel />
+			<BasePanel>
+				<h1>Panel content</h1>
+			</BasePanel>
 			<StocksChart />
 		</BaseBox>
 	</PrivatePage>
