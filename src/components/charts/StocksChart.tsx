@@ -45,7 +45,7 @@ export const StocksChart: React.FC = () => {
 				<h1>Config me!</h1>
 			</ChartConfig>
 			<ChartContent>
-				<BaseChart data={ data } key="name" value="pv" />
+				<BaseChart data={ data } keys="name" values="uv" />
 			</ChartContent>
 		</ChartRoot>
 	);
