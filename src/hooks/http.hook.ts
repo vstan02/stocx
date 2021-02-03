@@ -14,12 +14,14 @@ interface HttpHook {
 	clearError(): void;
 }
 
+axios.defaults.baseURL = API_URL;
+
 export const useHttp = (): HttpHook => {
 	const [error, setError] = useState('');
 
-	const request = useCallback(async (url, method = HttpMethod.GET, body = null) => {
+	const request = useCallback(async (url, method = HttpMethod.GET, data = null) => {
 		try {
-			const  response = await axios({ url: API_URL + url, method, data: body });
+			const  response = await axios({ url, method, data });
 			if (response.data.status >= 300)
 				return setError(response.data.details);
 			return response.data;
