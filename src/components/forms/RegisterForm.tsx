@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import { HttpMethod, useHttp } from '../../hooks';
-import { BASE_API } from '../../config';
+import { HttpMethod, useBaseApi } from '../../hooks';
 
 import { FormInput } from '../inputs';
 import { FormButton, TextButton } from '../buttons';
@@ -14,7 +13,7 @@ interface RegisterFormProps {
 }
 
 export const RegisterForm: React.FC<RegisterFormProps> = props => {
-	const { request, error, clearError } = useHttp();
+	const { request, error, clearError } = useBaseApi();
 	const [message, setMessage] = useState('');
 	const [credentials, setCredentials] = useState({
 		username: '',
@@ -26,7 +25,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = props => {
 	};
 
 	const submit = async () => {
-		const data = await request(`${ BASE_API }/auth/register`, HttpMethod.POST, credentials);
+		const data = await request('/auth/register', HttpMethod.POST, credentials);
 		if (data) {
 			clearError();
 			setMessage('You have successfully registered');

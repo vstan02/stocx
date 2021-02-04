@@ -23,8 +23,10 @@ const PanelConfig = styled.div`
 `;
 
 const PanelContent = styled.div`
+	width: 80%;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 `;
 
 export const BasePanel: React.FC = props => (
