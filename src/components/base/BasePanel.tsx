@@ -12,7 +12,7 @@ const PanelRoot = styled.aside`
 	background-color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 `;
 
-const PanelConfig = styled.div`
+const PanelHead = styled.div`
 	width: 80%;
 	height: 100px;
 	display: flex;
@@ -23,7 +23,7 @@ const PanelConfig = styled.div`
 `;
 
 const PanelContent = styled.div`
-	width: 80%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
@@ -31,9 +31,9 @@ const PanelContent = styled.div`
 
 export const BasePanel: React.FC = props => (
 	<PanelRoot>
-		<PanelConfig>
+		<PanelHead>
 			<LogoutButton>Logout</LogoutButton>
-		</PanelConfig>
+		</PanelHead>
 		<PanelContent>
 			{ props.children }
 		</PanelContent>

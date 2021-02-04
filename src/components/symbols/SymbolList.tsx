@@ -3,9 +3,7 @@ import styled from 'styled-components';
 
 import { HttpMethod, useFinanceApi } from '../../hooks';
 
-interface Symbol {
-	symbol: string;
-}
+import { BaseSymbol } from './BaseSymbol';
 
 const ListRoot = styled.ul`
 	width: 100%;
@@ -18,9 +16,6 @@ const ListRoot = styled.ul`
 const ListItem = styled.li`
 	width: 100%;
 	height: 70px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	color: ${ ({ theme }) => theme.color.CONTRAST_ALPHA };
 	transition: .5s background-color;
 	cursor: pointer;
@@ -44,9 +39,10 @@ export const SymbolList: React.FC = () => {
 
 	return (
 		<ListRoot>
-			{ symbols.map((item: Symbol, index) => (
+			{ symbols.map((item, index) => (
+				// Not best key, but a better key field doesn't exists in the symbol object
 				<ListItem key={ index }>
-					{ item.symbol }
+					<BaseSymbol target={ item } />
 				</ListItem>
 			)) }
 		</ListRoot>
