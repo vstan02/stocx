@@ -1,8 +1,6 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
 
-import { API_URL } from '../config';
-
 export enum HttpMethod {
 	GET = 'GET',
 	POST = 'POST'
@@ -13,8 +11,6 @@ interface HttpHook {
 	request(url: string, method: HttpMethod, body: any): any;
 	clearError(): void;
 }
-
-axios.defaults.baseURL = API_URL;
 
 export const useHttp = (): HttpHook => {
 	const [error, setError] = useState('');

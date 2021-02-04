@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 
 import { HttpMethod, useHttp } from '../../hooks';
 import { AuthContext } from '../../context';
+import { BASE_API } from '../../config';
 
 import { FormInput } from '../inputs';
 import { FormButton, TextButton } from '../buttons';
@@ -26,7 +27,7 @@ export const LoginForm: React.FC<LoginFormProps> = props => {
 	};
 
 	const submit = async () => {
-		const data = await request('/auth/login', HttpMethod.POST, credentials);
+		const data = await request(`${ BASE_API }/auth/login`, HttpMethod.POST, credentials);
 		if (data) {
 			clearError();
 			auth.login(data.token);
