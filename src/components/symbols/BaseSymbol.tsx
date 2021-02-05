@@ -6,9 +6,6 @@ interface Symbol {
 	country: string;
 	currency: string;
 	exchange: string;
-	exchange_timezone: string;
-	instrument_name: string;
-	instrument_type: string;
 }
 
 interface BaseSymbolProps {

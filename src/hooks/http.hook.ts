@@ -10,7 +10,7 @@ export enum HttpMethod {
 
 interface HttpHook {
 	error: string;
-	request(url: string, method: HttpMethod, data: any): any;
+	request(url: string, method?: HttpMethod, data?: any): any;
 	clearError(): void;
 }
 

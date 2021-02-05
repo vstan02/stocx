@@ -5,3 +5,5 @@ export const AuthContext = createContext({
 	login(token: string) {},
 	logout() {}
 });
+
+export const AuthProvider = AuthContext.Provider;

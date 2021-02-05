@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { HttpMethod, useFinanceApi } from '../../hooks';
+import { useFinanceApi } from '../../hooks';
 
 import { BaseSymbol } from './BaseSymbol';
+
+interface SymbolListProps {
+	onSelect(symbol: string): void;
+}
 
 const ListRoot = styled.ul`
 	width: 100%;
@@ -25,23 +29,23 @@ const ListItem = styled.li`
 	}
 `;
 
-export const SymbolList: React.FC = () => {
+export const SymbolList: React.FC<SymbolListProps> = props => {
 	const { request } = useFinanceApi();
-	const [symbols, setSymbols] = useState([]);
+	const [symbols, setSymbols] = useState<Array<any>>([]);
 
-	// @ts-ignore
-	useEffect(async () => {
-		const params = { outputsize: '20' };
-		const result = await request('/symbol_search', HttpMethod.GET, params);
-		setSymbols(result.data);
-		console.log(result);
+	useEffect(() => {
+		request('/symbol_search').then((result: any) => {
+			const symbols = result.data.filter((symbol: any) => symbol.country === 'United States');
+			setSymbols(symbols);
+			props.onSelect(symbols[0].symbol);
+		});
 	}, []);
 
 	return (
 		<ListRoot>
 			{ symbols.map((item, index) => (
 				// Not best key, but a better key field doesn't exists in the symbol object
-				<ListItem key={ index }>
+				<ListItem key={ index } onClick={ () => props.onSelect(item.symbol) }>
 					<BaseSymbol target={ item } />
 				</ListItem>
 			)) }

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import { HttpMethod, useFinanceApi } from '../../hooks';
+
 import { BaseChart } from './BaseChart';
+
+interface PriceData {
+	price: number;
+}
+
+interface StocksChartProps {
+	symbol: string;
+}
 
 const ChartRoot = styled.div`
 	width: 100%;
@@ -27,17 +37,25 @@ const ChartContent = styled.div`
 	height: calc(100% - 70px);
 `;
 
-export const StocksChart: React.FC = () => {
-	const data = [
-		{name: 'Page A', uv: 300, pv: 2400, amt: 2400},
-		{name: 'Page B', uv: 500, pv: 2000, amt: 2400},
-		{name: 'Page C', uv: 200, pv: 400, amt: 2400},
-		{name: 'Page D', uv: 350, pv: 1400, amt: 2400},
-		{name: 'Page E', uv: 320, pv: 1400, amt: 2400},
-		{name: 'Page F', uv: 300, pv: 1400, amt: 2400},
-		{name: 'Page G', uv: 250, pv: 1400, amt: 2400},
-		{name: 'Page H', uv: 280, pv: 1400, amt: 2400},
-	];
+export const StocksChart: React.FC<StocksChartProps> = props => {
+	const { request } = useFinanceApi();
+	const [data, setData] = useState<Array<PriceData>>([]);
+
+	useEffect(() => {
+		const params = {
+			symbol: props.symbol,
+			interval: '1week',
+			outputsize: '10'
+		};
+		request('/time_series', HttpMethod.GET, params)
+			.then((result: any) => {
+				if (result && result.values) {
+					setData(result.values);
+				} else {
+					alert('Request limit reached. Please wait a minute!');
+				}
+			});
+	}, [props.symbol]);
 
 	return (
 		<ChartRoot>
@@ -45,7 +63,7 @@ export const StocksChart: React.FC = () => {
 				<h1>Config me!</h1>
 			</ChartConfig>
 			<ChartContent>
-				<BaseChart data={ data } keys="name" values="uv" />
+				<BaseChart data={ data } keys="datetime" values="high" />
 			</ChartContent>
 		</ChartRoot>
 	);
