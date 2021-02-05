@@ -5,10 +5,6 @@ import { HttpMethod, useFinanceApi } from '../../hooks';
 
 import { BaseChart } from './BaseChart';
 
-interface PriceData {
-	price: number;
-}
-
 interface StocksChartProps {
 	symbol: string;
 }
@@ -39,7 +35,7 @@ const ChartContent = styled.div`
 
 export const StocksChart: React.FC<StocksChartProps> = props => {
 	const { request } = useFinanceApi();
-	const [data, setData] = useState<Array<PriceData>>([]);
+	const [data, setData] = useState([]);
 
 	useEffect(() => {
 		const params = {
@@ -47,14 +43,13 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 			interval: '1week',
 			outputsize: '10'
 		};
-		request('/time_series', HttpMethod.GET, params)
-			.then((result: any) => {
-				if (result && result.values) {
-					setData(result.values);
-				} else {
-					alert('Request limit reached. Please wait a minute!');
-				}
-			});
+		request('/time_series', HttpMethod.GET, params).then((result: any) => {
+			if (result && result.values) {
+				setData(result.values);
+			} else {
+				alert('Request limit reached. Please wait a minute!');
+			}
+		});
 	}, [props.symbol]);
 
 	return (
