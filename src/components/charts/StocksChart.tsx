@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { HttpMethod, useFinanceApi } from '../../hooks';
 
+import { MenuButton } from '../buttons';
+
 import { BaseChart } from './BaseChart';
 
 interface StocksChartProps {
@@ -19,7 +21,7 @@ const ChartRoot = styled.div`
 	background-color: ${ ({ theme }) => theme.color.BASE_BETA };
 `;
 
-const ChartConfig = styled.div`
+const ChartMenu = styled.div`
 	width: 100%;
 	height: 70px;
 	display: flex;
@@ -37,7 +39,7 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 	const { request } = useFinanceApi();
 	const [data, setData] = useState([]);
 
-	useEffect(() => {
+	const refresh = () => {
 		const params = {
 			symbol: props.symbol,
 			interval: '1week',
@@ -46,17 +48,21 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 		request('/time_series', HttpMethod.GET, params).then((result: any) => {
 			if (result && result.values) {
 				setData(result.values);
-			} else {
+			} else if (props.symbol) {
 				alert('Request limit reached. Please wait a minute!');
 			}
 		});
-	}, [props.symbol]);
+	};
+
+	useEffect(refresh, [props.symbol]);
 
 	return (
 		<ChartRoot>
-			<ChartConfig>
-				<h1>Config me!</h1>
-			</ChartConfig>
+			<ChartMenu>
+				<MenuButton onClick={ refresh }>
+					Refresh
+				</MenuButton>
+			</ChartMenu>
 			<ChartContent>
 				<BaseChart data={ data } keys="datetime" values="high" />
 			</ChartContent>
