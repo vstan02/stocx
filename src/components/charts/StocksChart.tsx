@@ -39,6 +39,11 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 	const { request } = useFinanceApi();
 	const [data, setData] = useState([]);
 
+	const toChartData = (item: any) => ({
+		datetime: item.datetime,
+		price: item.high
+	});
+
 	const refresh = () => {
 		const params = {
 			symbol: props.symbol,
@@ -47,7 +52,8 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 		};
 		request('/time_series', HttpMethod.GET, params).then((result: any) => {
 			if (result && result.values) {
-				setData(result.values);
+				const values = result.values.reverse();
+				setData(values.map(toChartData));
 			} else if (props.symbol) {
 				alert('Request limit reached. Please wait a minute!');
 			}
@@ -64,7 +70,7 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 				</MenuButton>
 			</ChartMenu>
 			<ChartContent>
-				<BaseChart data={ data } keys="datetime" values="high" />
+				<BaseChart data={ data } keys="datetime" values="price" />
 			</ChartContent>
 		</ChartRoot>
 	);

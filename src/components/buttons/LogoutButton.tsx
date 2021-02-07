@@ -6,7 +6,7 @@ import { AuthContext } from '../../context';
 import { BaseButton } from './BaseButton';
 
 export const ButtonRoot = styled(BaseButton)`
-	width: 100%;
+	width: 80%;
 	color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 	background-color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
 	transition: 0.3s background-color;

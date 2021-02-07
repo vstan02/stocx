@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { useFinanceApi } from '../../hooks';
+import { HttpMethod, useFinanceApi } from '../../hooks';
 
 import { BaseSymbol } from './BaseSymbol';
 
 interface SymbolListProps {
+	search: string;
 	onSelect(symbol: string): void;
 }
 
@@ -34,12 +35,15 @@ export const SymbolList: React.FC<SymbolListProps> = props => {
 	const [symbols, setSymbols] = useState<Array<any>>([]);
 
 	useEffect(() => {
-		request('/symbol_search').then((result: any) => {
+		const params = { symbol: props.search };
+		request('/symbol_search', HttpMethod.GET, params).then((result: any) => {
 			const symbols = result.data.filter((symbol: any) => symbol.country === 'United States');
 			setSymbols(symbols);
-			props.onSelect(symbols[0].symbol);
+			if (symbols[0]) {
+				props.onSelect(symbols[0].symbol);
+			}
 		});
-	}, []);
+	}, [props.search]);
 
 	return (
 		<ListRoot>
