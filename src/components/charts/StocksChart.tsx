@@ -26,13 +26,19 @@ const ChartMenu = styled.div`
 	height: 70px;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: space-between;
 	padding: 0 60px;
 `;
 
 const ChartContent = styled.div`
 	width: calc(100% - 100px);
 	height: calc(100% - 70px);
+`;
+
+const ChartSymbol = styled.div`
+	font-size: 30px;
+	font-weight: bold;
+	color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
 `;
 
 export const StocksChart: React.FC<StocksChartProps> = props => {
@@ -65,6 +71,9 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 	return (
 		<ChartRoot>
 			<ChartMenu>
+				<ChartSymbol>
+					Symbol: { props.symbol }
+				</ChartSymbol>
 				<MenuButton onClick={ refresh }>
 					Refresh
 				</MenuButton>

@@ -37,10 +37,10 @@ export const SymbolList: React.FC<SymbolListProps> = props => {
 	useEffect(() => {
 		const params = { symbol: props.search };
 		request('/symbol_search', HttpMethod.GET, params).then((result: any) => {
-			const symbols = result.data.filter((symbol: any) => symbol.country === 'United States');
-			setSymbols(symbols);
-			if (symbols[0]) {
-				props.onSelect(symbols[0].symbol);
+			if (result) {
+				const symbols = result.data.filter((symbol: any) => symbol.country === 'United States');
+				setSymbols(symbols);
+				symbols[0] && props.onSelect(symbols[0].symbol);
 			}
 		});
 	}, [props.search]);
