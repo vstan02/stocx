@@ -48,7 +48,6 @@ export const SymbolList: React.FC<SymbolListProps> = props => {
 	return (
 		<ListRoot>
 			{ symbols.map((item, index) => (
-				// Not best key, but a better key field doesn't exists in the symbol object
 				<ListItem key={ index } onClick={ () => props.onSelect(item.symbol) }>
 					<BaseSymbol target={ item } />
 				</ListItem>
