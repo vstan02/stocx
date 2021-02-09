@@ -97,7 +97,13 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 		});
 	};
 
+	const unmount = () => {
+		baseApi.abort();
+		financeApi.abort();
+	};
+
 	useEffect(updateChart, [props.symbol, interval]);
+	useEffect(() => unmount, []);
 
 	return (
 		<ChartRoot>

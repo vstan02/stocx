@@ -11,16 +11,20 @@ export enum HttpMethod {
 interface HttpHook {
 	error: string;
 	request(url: string, method?: HttpMethod, data?: any): any;
+	abort(): void;
 	clearError(): void;
 }
 
 export const useBaseApi = (): HttpHook => {
+	const source = axios.CancelToken.source();
 	const [error, setError] = useState('');
 
 	const request = useCallback(async (uri, method = HttpMethod.GET, data = {}) => {
 		try {
 			const url = BASE_API + uri;
-			const  response = await axios({ url, method, data });
+			const cancelToken = source.token;
+			const  response = await axios({ url, method, data, cancelToken });
+
 			if (response.data.status >= 300)
 				return setError(response.data.details);
 			return response.data;
@@ -29,11 +33,13 @@ export const useBaseApi = (): HttpHook => {
 		}
 	}, []);
 
+	const abort = () => source.cancel();
 	const clearError = () => setError('');
-	return { error, request, clearError };
+	return { error, request, abort, clearError };
 };
 
 export const useFinanceApi = (): HttpHook => {
+	const source = axios.CancelToken.source();
 	const [error, setError] = useState('');
 
 	const request = useCallback(async (uri, method = HttpMethod.GET, params = {}) => {
@@ -43,7 +49,9 @@ export const useFinanceApi = (): HttpHook => {
 				'x-rapidapi-key': FINANCE_KEY,
 				'x-rapidapi-host': FINANCE_HOST
 			};
-			const  response = await axios({ url, method, params, headers });
+			const cancelToken = source.token;
+			const  response = await axios({ url, method, params, headers, cancelToken });
+
 			if (response.data.status !== 'ok')
 				return setError('Finance api error');
 			return response.data;
@@ -52,6 +60,7 @@ export const useFinanceApi = (): HttpHook => {
 		}
 	}, []);
 
+	const abort = () => source.cancel();
 	const clearError = () => setError('');
-	return { error, request, clearError };
+	return { error, request, abort, clearError };
 };
