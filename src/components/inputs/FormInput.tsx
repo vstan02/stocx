@@ -12,6 +12,7 @@ interface FormInputProps {
 }
 
 const InputRoot = styled.div`
+	width: 100%;
 	height: 50px;
 	display: flex;
 	flex-direction: column;
@@ -19,8 +20,14 @@ const InputRoot = styled.div`
 	margin: 20px 0;
 	
 	&:focus-within > div {
-		width: 400px;
+		width: calc(100% + 8px);
 		height: 2px;
+	}
+	
+	@media (max-width: 560px) {
+		&:focus-within > div {
+			width: 100%;
+		}
 	}
 `;
 
@@ -37,6 +44,10 @@ const InputFocus = styled.div`
 	background-color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
 	transition: 0.5s width;
 	align-self: center;
+	
+	@media (max-width: 560px) {
+		left: 0;
+	}
 `;
 
 export const FormInput: React.FC<FormInputProps> = props => {

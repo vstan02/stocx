@@ -12,11 +12,26 @@ const FormRoot = styled.form`
 	background-color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 	border-radius: 3px;
 	box-shadow: 0 0 5px ${ ({ theme }) => theme.color.BASE_ALPHA };
+	
+	@media (max-width: 560px) {
+		width: 100%;
+		height: 100%;
+		border-radius: 0;
+		display: flex;
+		//padding: 0;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 `;
 
 const FormTitle = styled.h1`
 	color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
 	margin-bottom: 30px;
+
+	@media (max-width: 560px) {
+		margin: 0;
+	}
 `;
 
 export const BaseForm: React.FC<BaseFromProps> = props => {

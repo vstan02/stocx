@@ -8,4 +8,8 @@ export const BaseInput = styled.input`
 	color: ${ ({ theme }) => theme.color.CONTRAST_ALPHA };
 	background-color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 	border-bottom: 1px solid ${ ({ theme }) => theme.color.BASE_BETA };
+	
+	@media (max-width: 560px) {
+		width: 100%;
+	}
 `;
