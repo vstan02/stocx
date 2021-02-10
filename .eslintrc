@@ -28,6 +28,7 @@
 		"quotes": "off",
 		"semi": "off",
 		"react/prop-types": "off",
+		"react/no-children-prop": "off",
 		"@typescript-eslint/ban-types": "off",
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/interface-name-prefix": "off",
