@@ -16,12 +16,20 @@ interface OptionInputProps {
 const InputRoot = styled.div`
 	display: flex;
 	align-items: center;
+
+	@media (max-width: 640px) {
+		flex-direction: column;
+	}
 `;
 
 const InputLabel = styled.label`
 	font-weight: bold;
 	margin-right: 10px;
 	color: ${ ({ theme }) => theme.color.PRIMARY_BETA };
+
+	@media (max-width: 800px) {
+		font-size: 14px;
+	}
 `;
 
 const InputSelect = styled.select`
@@ -31,6 +39,12 @@ const InputSelect = styled.select`
 	outline: none;
 	font-weight: bold;
 	background-color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
+
+	@media (max-width: 800px) {
+		width: 100px;
+		height: 20px;
+		font-size: 14px;
+	}
 `;
 
 const InputOption = styled.option`

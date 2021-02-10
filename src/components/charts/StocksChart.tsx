@@ -41,22 +41,43 @@ const ChartRoot = styled.div`
 
 const ChartMenu = styled.div`
 	width: 100%;
-	height: 70px;
+	height: 80px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 60px;
 `;
 
 const ChartContent = styled.div`
 	width: calc(100% - 100px);
-	height: calc(100% - 70px);
+	height: calc(100% - 80px);
+	
+	@media (max-width: 1024px) {
+		width: 100%;
+		padding-right: 30px;
+	}
 `;
 
 const ChartSymbol = styled.div`
+	width: 450px;
 	font-size: 30px;
 	font-weight: bold;
+	padding-left: 60px;
 	color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
+	
+	@media (max-width: 800px) {
+		font-size: 20px;
+	}
+`;
+
+const ChartControl = styled.div`
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	@media (max-width: 540px) {
+		flex-direction: column;
+	}
 `;
 
 export const StocksChart: React.FC<StocksChartProps> = props => {
@@ -111,15 +132,17 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 				<ChartSymbol>
 					Symbol: { props.symbol }
 				</ChartSymbol>
-				<OptionInput
-					label="Set interval"
-					value={ interval }
-					options={ OPTIONS }
-					onChange={ updateInterval }
-				/>
-				<MenuButton onClick={ updateChart }>
-					Refresh
-				</MenuButton>
+				<ChartControl>
+					<OptionInput
+						label="Set interval"
+						value={ interval }
+						options={ OPTIONS }
+						onChange={ updateInterval }
+					/>
+					<MenuButton onClick={ updateChart }>
+						Refresh
+					</MenuButton>
+				</ChartControl>
 			</ChartMenu>
 			<ChartContent>
 				<BaseChart data={ data } keys="datetime" values="price" />

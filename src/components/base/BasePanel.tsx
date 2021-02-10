@@ -21,6 +21,11 @@ const PanelRoot = styled.aside<PanelRootProps>`
 		position: absolute;
 		left: ${ (props: any) => props.open ? '0' : '-420px' };
 	}
+
+	@media (max-width: 540px) {
+		width: 260px;
+		left: ${ (props: any) => props.open ? '0' : '-260px' };
+	}
 `;
 
 const PanelClose = styled(BaseButton)`
@@ -28,19 +33,23 @@ const PanelClose = styled(BaseButton)`
 	
 	@media (max-width: 1024px) {
 		display: block;
-		width: 50px;
-		height: 50px;
+		width: 40px;
+		height: 40px;
 		background-color: inherit;
 		position: absolute;
 		left: 420px;
-		top: 10px;
+		top: 20px;
 		border-radius: 0 3px 3px 0;
+	}
+
+	@media (max-width: 540px) {
+		left: 260px;
 	}
 `;
 
 const PanelHead = styled.div`
 	width: 100%;
-	height: 100px;
+	padding: 20px 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
