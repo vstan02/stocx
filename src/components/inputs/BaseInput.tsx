@@ -9,7 +9,7 @@ export const BaseInput = styled.input`
 	background-color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 	border-bottom: 1px solid ${ ({ theme }) => theme.color.BASE_BETA };
 	
-	@media (max-width: 560px) {
+	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
 		width: 100%;
 	}
 `;

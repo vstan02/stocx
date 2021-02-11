@@ -7,9 +7,12 @@ export const MenuButton = styled(BaseButton)`
 	background-color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 	transition: .5s box-shadow;
 
-	@media (max-width: 800px) {
+	@media (max-width: ${ ({ theme }) => theme.bkps.BETA }) {
 		width: 100px;
-		height: 30px;
 		font-size: 14px;
+	}
+
+	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+		height: 30px;
 	}
 `;

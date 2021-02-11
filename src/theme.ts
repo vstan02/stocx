@@ -1,4 +1,10 @@
 export default {
+	bkps: {
+		ALPHA: '1024px',
+		BETA: '800px',
+		GAMMA: '640px',
+		DELTA: '560px'
+	},
 	image: {
 		BOX_BG: '/background.jpg'
 	},

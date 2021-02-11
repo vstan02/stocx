@@ -24,7 +24,7 @@ const InputRoot = styled.div`
 		height: 2px;
 	}
 	
-	@media (max-width: 560px) {
+	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
 		&:focus-within > div {
 			width: 100%;
 		}
@@ -45,7 +45,7 @@ const InputFocus = styled.div`
 	transition: 0.5s width;
 	align-self: center;
 	
-	@media (max-width: 560px) {
+	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
 		left: 0;
 	}
 `;
