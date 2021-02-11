@@ -11,7 +11,7 @@ const Home: React.FC = () => {
 	const [symbol, setSymbol] = useState('');
 
 	return (
-		<PrivatePage title='Stox | A simple stock price web app'>
+		<PrivatePage title='Stocx | A simple stock price web app'>
 			<BaseBox>
 				<BasePanel>
 					<SearchInput
