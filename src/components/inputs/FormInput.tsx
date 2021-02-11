@@ -12,7 +12,7 @@ interface FormInputProps {
 }
 
 const InputRoot = styled.div`
-	width: 100%;
+	width: 400px;
 	height: 50px;
 	display: flex;
 	flex-direction: column;
@@ -20,7 +20,7 @@ const InputRoot = styled.div`
 	margin: 20px 0;
 	
 	&:focus-within > div {
-		width: calc(100% + 8px);
+		width: 100%;
 		height: 2px;
 	}
 	
@@ -39,7 +39,6 @@ const InputFocus = styled.div`
 	width: 0;
 	height: 0;
 	position: relative;
-	left: 5px;
 	bottom: 1px;
 	background-color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
 	transition: 0.5s width;

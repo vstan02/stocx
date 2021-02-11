@@ -10,6 +10,7 @@ interface FormInputProps {
 }
 
 const InputRoot = styled.div`
+	height: 60px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -30,7 +31,7 @@ const InputFocus = styled.div`
 	width: 0;
 	height: 0;
 	position: relative;
-	bottom: 1px;
+	bottom: 2px;
 	background-color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
 	transition: .5s width;
 	align-self: center;

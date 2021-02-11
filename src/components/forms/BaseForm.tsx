@@ -9,6 +9,7 @@ interface BaseFromProps {
 const FormRoot = styled.form`
 	width: 500px;
 	padding: 35px 55px;
+	margin: 0;
 	overflow-y: scroll;
 	background-color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 	border-radius: 3px;
@@ -17,6 +18,7 @@ const FormRoot = styled.form`
 	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
 		width: 100%;
 		height: 100%;
+		padding: 0;
 		border-radius: 0;
 		display: flex;
 		flex-direction: column;
