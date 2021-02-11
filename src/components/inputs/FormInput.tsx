@@ -23,8 +23,10 @@ const InputRoot = styled.div`
 		width: 100%;
 		height: 2px;
 	}
-	
+
 	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+		width: calc(100% - 70px);
+		
 		&:focus-within > div {
 			width: 100%;
 		}
