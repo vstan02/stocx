@@ -10,6 +10,10 @@
     "start": "next start",
     "lint": "eslint 'src/**' --fix --ext .js,.ts"
   },
+  "engines": {
+    "node": ">= 11.15.0",
+    "npm": ">= 6.7.0"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "jsonwebtoken": "^8.5.1",
