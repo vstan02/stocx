@@ -11,7 +11,12 @@ export const BaseChart: React.FC<BaseChartProps> = props => (
 	<ResponsiveContainer>
 		<AreaChart data={ props.data }>
 			<XAxis dataKey={ props.keys } stroke="#FFFFFF" />
-			<YAxis dataKey={ props.values } stroke="#FFFFFF" />
+			<YAxis
+				dataKey={ props.values }
+				stroke="#FFFFFF"
+				domain={[0, (max: number) => (max * 1.5)]}
+				allowDataOverflow
+			/>
 			<Tooltip />
 			<CartesianGrid stroke="#172331" strokeDasharray="2 2" />
 			<Area
