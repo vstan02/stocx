@@ -9,6 +9,7 @@ interface BaseFromProps {
 const FormRoot = styled.form`
 	width: 500px;
 	padding: 35px 55px;
+	overflow-y: scroll;
 	background-color: ${ ({ theme }) => theme.color.BASE_ALPHA };
 	border-radius: 3px;
 	box-shadow: 0 0 5px ${ ({ theme }) => theme.color.BASE_ALPHA };
