@@ -10,6 +10,8 @@ interface SymbolListProps {
 	onSelect(symbol: string): void;
 }
 
+const SEARCH_DELAY = 1000;
+
 const ListRoot = styled.ul`
 	width: 100%;
 	height: 100%;
@@ -32,18 +34,32 @@ const ListItem = styled.li`
 
 export const SymbolList: React.FC<SymbolListProps> = props => {
 	const { request } = useFinanceApi();
+
+	const [timeoutID, setTimeoutID] = useState(0);
+	const [firstRequest, setFirstRequest] = useState(true);
+	const [symbol, setSymbol] = useState('');
 	const [symbols, setSymbols] = useState<Array<any>>([]);
 
+	const symbolFilter = (symbol: any) => symbol.country === 'United States';
+
 	useEffect(() => {
-		const params = { symbol: props.search };
-		request('/symbol_search', HttpMethod.GET, params).then((result: any) => {
+		window.clearTimeout(timeoutID);
+		const id = window.setTimeout(() => setSymbol(props.search), SEARCH_DELAY);
+		setTimeoutID(id);
+	}, [props.search]);
+
+	useEffect(() => {
+		request('/symbol_search', HttpMethod.GET, { symbol }).then((result: any) => {
 			if (result) {
-				const symbols = result.data.filter((symbol: any) => symbol.country === 'United States');
+				const symbols = result.data.filter(symbolFilter);
 				setSymbols(symbols);
-				symbols[0] && props.onSelect(symbols[0].symbol);
+				if (firstRequest && symbols[0]) {
+					setFirstRequest(false);
+					props.onSelect(symbols[0].symbol);
+				}
 			}
 		});
-	}, [props.search]);
+	}, [symbol]);
 
 	return (
 		<ListRoot>
