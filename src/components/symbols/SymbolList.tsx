@@ -33,7 +33,7 @@ const ListItem = styled.li`
 `;
 
 export const SymbolList: React.FC<SymbolListProps> = props => {
-	const { request } = useFinanceApi();
+	const { request, abort } = useFinanceApi();
 
 	const [timeoutID, setTimeoutID] = useState(0);
 	const [firstRequest, setFirstRequest] = useState(true);
@@ -60,6 +60,8 @@ export const SymbolList: React.FC<SymbolListProps> = props => {
 			}
 		});
 	}, [symbol]);
+
+	useEffect(() => abort, []);
 
 	return (
 		<ListRoot>

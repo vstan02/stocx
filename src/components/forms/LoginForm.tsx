@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 import { HttpMethod, useBaseApi } from '../../hooks';
 import { AuthContext } from '../../context';
@@ -15,7 +15,7 @@ interface LoginFormProps {
 
 export const LoginForm: React.FC<LoginFormProps> = props => {
 	const auth = useContext(AuthContext);
-	const { request, error, clearError } = useBaseApi();
+	const { request, error, clearError, abort } = useBaseApi();
 	const [credentials, setCredentials] = useState({
 		username: '',
 		password: ''
@@ -32,6 +32,8 @@ export const LoginForm: React.FC<LoginFormProps> = props => {
 			auth.login(data.token);
 		}
 	};
+
+	useEffect(() => abort, []);
 
 	return (
 		<BaseForm title='Login' onSubmit={ submit }>

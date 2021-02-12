@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { HttpMethod, useBaseApi } from '../../hooks';
 
@@ -13,7 +13,7 @@ interface RegisterFormProps {
 }
 
 export const RegisterForm: React.FC<RegisterFormProps> = props => {
-	const { request, error, clearError } = useBaseApi();
+	const { request, error, clearError, abort } = useBaseApi();
 	const [message, setMessage] = useState('');
 	const [credentials, setCredentials] = useState({
 		username: '',
@@ -31,6 +31,8 @@ export const RegisterForm: React.FC<RegisterFormProps> = props => {
 			setMessage('You have successfully registered');
 		}
 	};
+
+	useEffect(() => abort, []);
 
 	return (
 		<BaseForm title='Register' onSubmit={ submit }>
