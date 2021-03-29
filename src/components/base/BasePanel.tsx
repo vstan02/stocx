@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { LogoutButton, BaseButton } from '../buttons';
+import { BaseButton } from '../buttons';
 
 interface PanelRootProps {
 	open: boolean;
@@ -47,16 +47,6 @@ const PanelClose = styled(BaseButton)`
 	}
 `;
 
-const PanelHead = styled.div`
-	width: 100%;
-	padding: 20px 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: ${ ({ theme }) => theme.color.CONTRAST_ALPHA };
-	border-bottom: 1px solid ${ ({ theme }) => theme.color.BASE_BETA };
-`;
-
 const PanelContent = styled.div`
 	width: 100%;
 	display: flex;
@@ -73,9 +63,6 @@ export const BasePanel: React.FC = props => {
 				children='x'
 				onClick={ () => setOpen(!open) }
 			/>
-			<PanelHead>
-				<LogoutButton>Logout</LogoutButton>
-			</PanelHead>
 			<PanelContent>
 				{ props.children }
 			</PanelContent>
