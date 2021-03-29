@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 
-import { BasePanel, BaseBox } from '../components/base';
-import { BasePage } from '../components/pages';
-import { StocksChart } from '../components/charts';
-import { SymbolList } from '../components/symbols';
-import { SearchInput } from '../components/inputs';
+import {
+	BasePage,
+	BasePanel,
+	BaseBox,
+	StocksChart,
+	SearchInput,
+	SymbolList
+} from '../components';
 
 const Home: React.FC = () => {
 	const [search, setSearch] = useState('');

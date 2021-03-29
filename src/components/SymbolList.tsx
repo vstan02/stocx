@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { HttpMethod, useFinanceApi } from '../../hooks';
+import { HttpMethod, useFinanceApi } from '../hooks';
 
 import { BaseSymbol } from './BaseSymbol';
 

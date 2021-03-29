@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { HttpMethod, useFinanceApi, useInterval } from '../../hooks';
+import { HttpMethod, useFinanceApi, useInterval } from '../hooks';
 
-import { MenuButton } from '../buttons';
-import { OptionInput } from '../inputs';
-
+import { MenuButton } from './MenuButton';
+import { OptionInput } from './OptionInput';
 import { BaseChart } from './BaseChart';
 
 interface StocksChartProps {

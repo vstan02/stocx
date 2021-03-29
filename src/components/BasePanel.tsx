@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { BaseButton } from '../buttons';
+import { BaseButton } from './BaseButton';
 
 interface PanelRootProps {
 	open: boolean;
