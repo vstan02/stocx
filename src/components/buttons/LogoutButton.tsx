@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
-import { AuthContext } from '../../context';
 
 import { BaseButton } from './BaseButton';
 
@@ -17,12 +15,8 @@ export const ButtonRoot = styled(BaseButton)`
 	}
 `;
 
-export const LogoutButton: React.FC = props => {
-	const { logout } = useContext(AuthContext);
-
-	return (
-		<ButtonRoot onClick={ logout }>
-			{ props.children }
-		</ButtonRoot>
-	);
-};
+export const LogoutButton: React.FC = props => (
+	<ButtonRoot>
+		{ props.children }
+	</ButtonRoot>
+);

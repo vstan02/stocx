@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { BasePanel, BaseBox } from '../components/base';
-import { PrivatePage } from '../components/pages';
+import { BasePage } from '../components/pages';
 import { StocksChart } from '../components/charts';
 import { SymbolList } from '../components/symbols';
 import { SearchInput } from '../components/inputs';
@@ -11,7 +11,7 @@ const Home: React.FC = () => {
 	const [symbol, setSymbol] = useState('');
 
 	return (
-		<PrivatePage title='Stocx | A simple stock price web app'>
+		<BasePage title='Stocx | A simple stock price web app'>
 			<BaseBox>
 				<BasePanel>
 					<SearchInput
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
 				</BasePanel>
 				<StocksChart symbol={ symbol } />
 			</BaseBox>
-		</PrivatePage>
+		</BasePage>
 	);
 };
 

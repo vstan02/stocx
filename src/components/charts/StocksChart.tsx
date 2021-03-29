@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import jwt from 'jsonwebtoken';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { AuthContext } from '../../context';
-import { HttpMethod, useBaseApi, useFinanceApi } from '../../hooks';
+import { HttpMethod, useFinanceApi, useInterval } from '../../hooks';
 
 import { MenuButton } from '../buttons';
 import { OptionInput } from '../inputs';
@@ -81,26 +79,15 @@ const ChartControl = styled.div`
 `;
 
 export const StocksChart: React.FC<StocksChartProps> = props => {
-	const baseApi = useBaseApi();
 	const financeApi = useFinanceApi();
+	const [interval, setInterval] = useInterval(DEFAULT_INTERVAL);
 
-	const { token } = useContext(AuthContext);
-	const result: any = jwt.decode(token);
-
-	const [interval, setInterval] = useState(result.interval || DEFAULT_INTERVAL);
 	const [data, setData] = useState([]);
 
 	const toChartData = (item: any) => ({
 		datetime: item.datetime,
 		price: item.high
 	});
-
-	const updateInterval = (value: string) => {
-		setInterval(value);
-		baseApi.request('/interval', HttpMethod.POST,  {
-			token, interval: value
-		});
-	};
 
 	const updateChart = () => {
 		const params = {
@@ -118,11 +105,7 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 		});
 	};
 
-	const unmount = () => {
-		baseApi.abort();
-		financeApi.abort();
-	};
-
+	const unmount = () => financeApi.abort();
 	useEffect(updateChart, [props.symbol, interval]);
 	useEffect(() => unmount, []);
 
@@ -137,7 +120,7 @@ export const StocksChart: React.FC<StocksChartProps> = props => {
 						label="Set interval"
 						value={ interval }
 						options={ OPTIONS }
-						onChange={ updateInterval }
+						onChange={ setInterval }
 					/>
 					<MenuButton onClick={ updateChart }>
 						Refresh
