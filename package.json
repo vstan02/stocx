@@ -1,7 +1,7 @@
 {
-  "name": "web-stocx",
-  "description": "A simple stock price web app",
-  "version": "0.0.0",
+  "name": "stocx",
+  "description": "A simple stock price monitoring app",
+  "version": "0.1.0",
   "author": "Stan Vlad <vstan02@protonmail.com>",
   "private": true,
   "scripts": {
@@ -17,7 +17,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "jsonwebtoken": "^8.5.1",
-    "next": "10.0.0",
+    "next": "^10.0.9",
     "normalize.css": "^8.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",

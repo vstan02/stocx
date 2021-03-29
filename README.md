@@ -1,5 +1,5 @@
-# Stox (_web_)
-> A simple stock price web app
+# Stocx
+> A simple stock price monitoring app
 
 ### Useful commands:
 ##### Install dependencies
