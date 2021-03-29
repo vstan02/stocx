@@ -10,6 +10,7 @@ interface BasePageProps {
 const PageRoot = styled.main`
 	width: 100%;
 	height: 100%;
+	display: flex;
 `;
 
 export const BasePage: React.FC<BasePageProps> = props => (

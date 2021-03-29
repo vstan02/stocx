@@ -1,6 +1,5 @@
 export * from './BasePage';
 export * from './BasePanel';
-export * from './BaseBox';
 export * from './BaseButton';
 export * from './BaseInput';
 export * from './BaseSymbol';
