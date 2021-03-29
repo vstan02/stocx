@@ -1,5 +1,5 @@
 export default {
-	bkps: {
+	bkp: {
 		ALPHA: '1024px',
 		BETA: '800px',
 		GAMMA: '640px',

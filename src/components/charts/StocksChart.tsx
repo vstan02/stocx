@@ -51,7 +51,7 @@ const ChartContent = styled.div`
 	width: calc(100% - 100px);
 	height: calc(100% - 80px);
 	
-	@media (max-width: ${ ({ theme }) => theme.bkps.ALPHA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.ALPHA }) {
 		width: 100%;
 		padding-right: 30px;
 	}
@@ -64,7 +64,7 @@ const ChartSymbol = styled.div`
 	padding-left: 60px;
 	color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
 	
-	@media (max-width: ${ ({ theme }) => theme.bkps.BETA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.BETA }) {
 		font-size: 20px;
 	}
 `;
@@ -75,7 +75,7 @@ const ChartControl = styled.div`
 	align-items: center;
 	justify-content: space-around;
 
-	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.DELTA }) {
 		flex-direction: column;
 	}
 `;

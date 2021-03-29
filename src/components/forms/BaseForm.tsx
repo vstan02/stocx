@@ -15,7 +15,7 @@ const FormRoot = styled.form`
 	border-radius: 3px;
 	box-shadow: 0 0 5px ${ ({ theme }) => theme.color.BASE_ALPHA };
 	
-	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.DELTA }) {
 		width: 100%;
 		height: 100%;
 		padding: 0;
@@ -31,7 +31,7 @@ const FormTitle = styled.h1`
 	color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
 	margin-bottom: 30px;
 
-	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.DELTA }) {
 		margin: 0;
 	}
 `;

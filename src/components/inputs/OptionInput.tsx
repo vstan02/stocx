@@ -17,7 +17,7 @@ const InputRoot = styled.div`
 	display: flex;
 	align-items: center;
 
-	@media (max-width: ${ ({ theme }) => theme.bkps.GAMMA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.GAMMA }) {
 		flex-direction: column;
 	}
 `;
@@ -27,7 +27,7 @@ const InputLabel = styled.label`
 	margin-right: 10px;
 	color: ${ ({ theme }) => theme.color.PRIMARY_BETA };
 
-	@media (max-width: ${ ({ theme }) => theme.bkps.BETA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.BETA }) {
 		font-size: 14px;
 	}
 `;
@@ -40,12 +40,12 @@ const InputSelect = styled.select`
 	font-weight: bold;
 	background-color: ${ ({ theme }) => theme.color.PRIMARY_ALPHA };
 
-	@media (max-width: ${ ({ theme }) => theme.bkps.BETA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.BETA }) {
 		width: 100px;
 		font-size: 14px;
 	}
 
-	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.DELTA }) {
 		height: 20px;
 	}
 `;

@@ -24,7 +24,7 @@ const InputRoot = styled.div`
 		height: 2px;
 	}
 
-	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.DELTA }) {
 		width: calc(100% - 70px);
 		
 		&:focus-within > div {
@@ -46,7 +46,7 @@ const InputFocus = styled.div`
 	transition: 0.5s width;
 	align-self: center;
 	
-	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.DELTA }) {
 		left: 0;
 	}
 `;

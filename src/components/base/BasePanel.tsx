@@ -17,12 +17,12 @@ const PanelRoot = styled.aside<PanelRootProps>`
 	z-index: 5;
 	transition: 1s left;
 	
-	@media (max-width: ${ ({ theme }) => theme.bkps.ALPHA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.ALPHA }) {
 		position: absolute;
 		left: ${ (props: any) => props.open ? '0' : '-420px' };
 	}
 
-	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.DELTA }) {
 		width: 260px;
 		left: ${ (props: any) => props.open ? '0' : '-260px' };
 	}
@@ -31,7 +31,7 @@ const PanelRoot = styled.aside<PanelRootProps>`
 const PanelClose = styled(BaseButton)`
 	display: none;
 	
-	@media (max-width: ${ ({ theme }) => theme.bkps.ALPHA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.ALPHA }) {
 		display: block;
 		width: 40px;
 		height: 40px;
@@ -42,7 +42,7 @@ const PanelClose = styled(BaseButton)`
 		border-radius: 0 3px 3px 0;
 	}
 
-	@media (max-width: ${ ({ theme }) => theme.bkps.DELTA }) {
+	@media (max-width: ${ ({ theme }) => theme.bkp.DELTA }) {
 		left: 260px;
 	}
 `;
